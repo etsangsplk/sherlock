@@ -2,6 +2,13 @@
 
 More about how, what, why is available in the [`docs`](/docs/index.md) folder.
 
+## Start daemon
+```
+make
+./bin/scherlokd
+curl -X GET -v localhost:8080/api/trace/34530
+```
+
 ## quick start
 We use `docker-compose`.
 
