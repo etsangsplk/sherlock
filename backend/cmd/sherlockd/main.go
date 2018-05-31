@@ -4,12 +4,13 @@ import (
 	"flag"
 	"sync"
 
-	"github.com/garethr/kubeval/log"
+	"log"
+
 	"github.com/gianarb/sherlock/backend/restapi"
 )
 
 func main() {
-	log.Info("Sherlock version ciao")
+	log.Println("Sherlock version ciao")
 	noUi := flag.Bool("no-ui", false, "a bool")
 	flag.Parse()
 	restConf := &restapi.Config{
