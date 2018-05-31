@@ -18,12 +18,11 @@ func StartRestApi(port int, deps *Config) func() error {
 	log.Info(fmt.Sprintf("Sherlock REST API reachable :%d", port))
 	if *deps.NoUi == false {
 		log.Info(fmt.Sprintf("UI exposed at :%d/", port))
-		r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-			fmt.Fprintf(w, "Hi there")
-		})
+		r.PathPrefix("/ui/").Handler(http.StripPrefix("/ui/", http.FileServer(http.Dir("ui"))))
 	} else {
 		log.Info("UI not exposed.")
 	}
+
 	r.HandleFunc("/ping", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "pong")
 	})
