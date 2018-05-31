@@ -1,4 +1,7 @@
-const fetchTrace = (id) => {
+const fetchTrace = (e) => {
+  e.preventDefault();
+  const id = $('.search-input').val();
+
   return fetch(`/api/trace/${id}`)
     .then(res => {
       if (res.status !== 200) {
@@ -11,4 +14,4 @@ const fetchTrace = (id) => {
     .catch(error => console.log(error));
 }
 
-fetchTrace(34530);
+$('.submit-btn').on('click', fetchTrace);
