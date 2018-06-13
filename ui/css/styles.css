@@ -52,3 +52,10 @@ h1 {
   background: #03dada;
   border: 3px solid #03dada;
 }
+
+#container {
+    min-width: 300px;
+    max-width: 800px;
+    height: 600px;
+    margin: 1em auto;
+}
