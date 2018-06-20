@@ -14,7 +14,7 @@ const fetchTrace = (e) => {
 
       const chartData = res.spans.map((obj, i) => {
         const duration = obj.duration_ns / 1000000;
-        
+
         return Object.assign({}, {
           x: moment(obj.start_time).valueOf(),
           x2: moment(obj.start_time).valueOf() + duration,
@@ -57,7 +57,7 @@ const fetchTrace = (e) => {
             pointWidth: 20,
             data: chartData,
             dataLabels: {
-                enabled: true
+                enabled: false
             }
         }]
       });
