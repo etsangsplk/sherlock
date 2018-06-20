@@ -11,18 +11,18 @@ const fetchTrace = (e) => {
     })
     .then(res => res.json())
     .then(res => {
-      const names = res.spans.map(obj => (obj.name).toUpperCase());
-      console.log({ names });
-      const startTimes = res.spans.map(obj => (moment(obj.start_time).unix())*1000);
-      console.log({ startTimes });
 
       const chartData = res.spans.map((obj, i) => {
+        const duration = obj.duration_ns / 1000000;
+        
         return Object.assign({}, {
-          x: (moment(obj.start_time).unix())*1000,
-          x2: (moment(obj.start_time).unix())*1000 + obj.duration_ns,
+          x: moment(obj.start_time).valueOf(),
+          x2: moment(obj.start_time).valueOf() + duration,
           y: i
         });
       });
+
+      console.log({ chartData})
 
       Highcharts.chart('container', {
         chart: {
